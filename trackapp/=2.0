@@ -1,0 +1,29 @@
+Collecting graphene-django
+  Downloading graphene_django-2.9.1-py2.py3-none-any.whl (71 kB)
+Collecting six>=1.10.0
+  Downloading six-1.14.0-py2.py3-none-any.whl (10 kB)
+Collecting graphene<3,>=2.1.7
+  Downloading graphene-2.1.8-py2.py3-none-any.whl (107 kB)
+Collecting promise>=2.1
+  Downloading promise-2.3.tar.gz (19 kB)
+Collecting singledispatch>=3.4.0.3
+  Downloading singledispatch-3.4.0.3-py2.py3-none-any.whl (12 kB)
+Requirement already satisfied: Django>=1.11 in /usr/local/lib/python3.8/site-packages (from graphene-django) (2.2.12)
+Collecting graphql-core<3,>=2.1.0
+  Downloading graphql_core-2.3.1-py2.py3-none-any.whl (251 kB)
+Collecting graphql-relay<3,>=2
+  Downloading graphql_relay-2.0.1-py3-none-any.whl (20 kB)
+Collecting aniso8601<=7,>=3
+  Downloading aniso8601-7.0.0-py2.py3-none-any.whl (42 kB)
+Requirement already satisfied: pytz in /usr/local/lib/python3.8/site-packages (from Django>=1.11->graphene-django) (2019.3)
+Requirement already satisfied: sqlparse in /usr/local/lib/python3.8/site-packages (from Django>=1.11->graphene-django) (0.3.1)
+Collecting rx<2,>=1.6
+  Downloading Rx-1.6.1-py2.py3-none-any.whl (179 kB)
+Building wheels for collected packages: promise
+  Building wheel for promise (setup.py): started
+  Building wheel for promise (setup.py): finished with status 'done'
+  Created wheel for promise: filename=promise-2.3-py3-none-any.whl size=21495 sha256=0f66e457452183a66b0cae745dd6d1147e2b528feb92764e0132b36dafb00d71
+  Stored in directory: /root/.cache/pip/wheels/54/aa/01/724885182f93150035a2a91bce34a12877e8067a97baaf5dc8
+Successfully built promise
+Installing collected packages: six, promise, rx, graphql-core, graphql-relay, aniso8601, graphene, singledispatch, graphene-django
+Successfully installed aniso8601-7.0.0 graphene-2.1.8 graphene-django-2.9.1 graphql-core-2.3.1 graphql-relay-2.0.1 promise-2.3 rx-1.6.1 singledispatch-3.4.0.3 six-1.14.0
