@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: "db"
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    volumes:
+        - pgdata:/var/lib/postgresql/data/
+  web:
+    container_name: api-container
+    build: ./api
+    restart: always
+    command: uwsgi --ini uwsgi.ini
+    # command: uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data
+    # command: uwsgi --ini trackapp.ini
+    # command: uwsgi --socket mysite.sock --module trackapp.wsgi --chmod-socket=666
+    # command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - api_data:/app
+    depends_on:
+      - db
+    networks:
+      - app-network
+      - backend
+  nginx:
+    container_name: nginx-container
+    build: ./nginx
+    restart: always 
+    ports:
+      - "80:80"
+    volumes:
+      - api_data:/app
+      - ./log:/var/log/nginx
+    depends_on:
+      - web
+      - napp
+    networks:
+      - app-network
+      - backend
+  napp:
+    container_name: node-container
+    build: ./node
+    restart: always
+    command: node src/server.js
+    # ports:
+    #   - "8080:8080"
+    networks:
+      - app-network
+      - backend
+    depends_on:
+      - db
+volumes:
+    api_data:
+    pgdata:
+
+networks:
+  app-network:
+    external: true
+  backend:
+    driver: bridge
